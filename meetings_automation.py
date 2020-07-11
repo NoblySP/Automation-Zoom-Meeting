@@ -27,7 +27,7 @@ def find_zoom():
 
     while zoom_icon_cord == None:
         print("Finding Zoom Icon...")
-        zoom_icon_cord = pag.locateCenterOnScreen("icon_zoom.png", confidence=0.7)
+        zoom_icon_cord = pag.locateCenterOnScreen("all_icons\icon_zoom.png", confidence=0.7)
     else:
         pag.click(zoom_icon_cord, clicks=2)
         print("\nFound Zoom Icon!\n")
@@ -38,7 +38,7 @@ def find_join_plus_icon():
 
     while join_plus_cord == None:
         print("Finding Join Plus Icon...")
-        join_plus_cord = pag.locateCenterOnScreen("join_plus_icon.png", confidence=0.8)
+        join_plus_cord = pag.locateCenterOnScreen("all_icons\join_plus_icon.png", confidence=0.8)
     else:
         pag.click(join_plus_cord)
         print("\nFound Join Plus Icon! \n")
@@ -50,12 +50,12 @@ def find_join_meeting_window():
     join_grey_btn = None
 
     while join_grey_btn == None:
-        join_grey_btn = pag.locateOnScreen("join_grey_btn.png", confidence=0.7)
+        join_grey_btn = pag.locateOnScreen("all_icons\join_grey_btn.png", confidence=0.7)
     else:
         pag.write(meeting_id)
         time.sleep(1)
         print("Finished typing Meeting ID \n")
-        pag.click(pag.locateCenterOnScreen("join_btn.png", confidence=0.7))
+        pag.click(pag.locateCenterOnScreen("all_icons\join_btn.png", confidence=0.7))
         #pag.press("enter")
                 
 def find_meeting_password_window():
@@ -65,12 +65,12 @@ def find_meeting_password_window():
     m_p_img = None
 
     while join_meet_grey_btn == None and m_p_img == None:
-        join_meet_grey_btn = pag.locateCenterOnScreen("join_meeting_grey_btn.png", confidence=0.7)
-        m_p_img = pag.locateCenterOnScreen("m_password_img.png", confidence=0.7)
+        join_meet_grey_btn = pag.locateCenterOnScreen("all_icons\join_meeting_grey_btn.png", confidence=0.7)
+        m_p_img = pag.locateCenterOnScreen("all_icons\m_password_img.png", confidence=0.7)
     else:
         pag.write(meeting_pswd)
         print("Finished typing Meeting Password \n")
-        pag.click(pag.locateCenterOnScreen("join_meeting_btn.png", confidence=0.7))
+        pag.click(pag.locateCenterOnScreen("all_icons\join_meeting_btn.png", confidence=0.7))
         #pag.click("enter")
 
 
