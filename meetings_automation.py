@@ -1,7 +1,9 @@
+# Importing required libraries
 import pyautogui as pag
 import time
 
 
+# This main() function executes all the other functions in a particular order
 def main():
     global meeting_id, meeting_pswd
     
@@ -17,11 +19,16 @@ def main():
     find_meeting_password_window()
     
 
-
+# This function simulates the pressing of Windows+D to go to the Desktop
 def go_desktop():
     pag.hotkey("win", "d")
 
-    
+  
+# In this function, we first create a variable called "zoom_icon_cord" and set it equal to None.
+# We take advantage of the fact that the PyAutoGUI module is designed in such a way that if an image can't be found on the screen, it returns None.
+# As long as the image (in this case, the Zoom icon) can't be found, the while loop will keep executing and will keep searching for the image.
+# But if it does find the image, the x and y values of the coordinates of the image are assigned to the zoom_icon_cord variable. Then, it double clicks on those coordinates.
+
 def find_zoom():
     zoom_icon_cord = None
 
@@ -52,8 +59,7 @@ def find_join_meeting_window():
     while join_grey_btn == None:
         join_grey_btn = pag.locateOnScreen("all_icons\join_grey_btn.png", confidence=0.7)
     else:
-        pag.write(meeting_id)
-        time.sleep(1)
+        pag.write(meeting_id, interval=0.07)
         print("Finished typing Meeting ID \n")
         pag.click(pag.locateCenterOnScreen("all_icons\join_btn.png", confidence=0.7))
         #pag.press("enter")
