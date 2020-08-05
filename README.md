@@ -24,4 +24,4 @@ This python script automates all these tedious tasks to save you many many secon
 
 - [ ] Use os module to find the Zoom application instead of searching for the Zoom application icon on the Desktop
 
-- [ ] Add a "Input Screenshot" and a "Demo of Working" (GIF/Video) to the README.md file
+- [ ] Add a _*"Input Screenshot"*_ and a _*Demo of Working*_ (GIF/Video) to the `README.md` file
