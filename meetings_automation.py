@@ -3,8 +3,6 @@ import time
 
 
 def main():
-    global meeting_id, meeting_pswd
-    
     meeting_id = input("Enter Meeting ID: ")
     meeting_pswd = input("Enter Meeting Password: ")
     time.sleep(0.5)
@@ -20,14 +18,14 @@ def main():
     if not success_join_plus:
         return 
     
-    success_meet_id = find_join_meeting_window()
+    success_meet_id = find_join_meeting_window(meeting_id)
     if not success_meet_id:
         return
 
     if meeting_pswd == "":  # If a meeting does not require a password, skip the find_meeting_password_window()
         return 
     else:
-        success_meeting_password = find_meeting_password_window()
+        success_meeting_password = find_meeting_password_window(meeting_pswd)
         if not success_meeting_password:
             return
 
@@ -87,9 +85,7 @@ def find_join_plus_icon():
             return False
 
 
-def find_join_meeting_window():
-    global meeting_id
-    
+def find_join_meeting_window(meeting_id):
     join_grey_btn = None
 
     start = time.time()
@@ -111,9 +107,7 @@ def find_join_meeting_window():
             return False
 
                 
-def find_meeting_password_window():
-    global meeting_pswd
-    
+def find_meeting_password_window(meeting_pswd):
     join_meet_grey_btn = None
     m_p_img = None
 
@@ -126,12 +120,12 @@ def find_meeting_password_window():
             m_p_img = pag.locateCenterOnScreen("all_icons\m_password_img.png", confidence=0.7)
             now = time.time()
 
-        if join_meet_grey_btn != None:
-            pag.write(meeting_pswd)
-            print("Finished typing Meeting Password \n")
-            pag.click(pag.locateCenterOnScreen("all_icons\join_meeting_btn.png", confidence=0.7))
-            #pag.click("enter")
-            return True
+            if join_meet_grey_btn != None:
+                pag.write(meeting_pswd)
+                print("Finished typing Meeting Password \n")
+                pag.click(pag.locateCenterOnScreen("all_icons\join_meeting_btn.png", confidence=0.7))
+                #pag.click("enter")
+                return True
         
         else:
             print("\nCould not type Meeting Password! \n")
